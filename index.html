@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+
+<body>
+    <h1>Exercício 5</h1>
+    <h2>Cálculo do índice de massa corporal</h2>
+
+    <div class="container">
+        <label for="nome">Informe seu nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome aqui">
+        <label for="peso">Informe seu peso (kg):</label>
+        <input type="number" id="peso" placeholder="Digite seu peso aqui">
+        <label for="altura">Informe sua altura (cm):</label>
+        <input type="number" id="altura" placeholder="Digite sua altura aqui">
+        <div class="btn-container">
+            <button id="calcular">Calcular IMC</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', function () {
+            const nome = document.getElementById('nome').value;
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value) / 100; // Convertendo cm para m
+
+            if (nome && !isNaN(peso) && !isNaN(altura)) {
+                const imc = peso / (altura * altura);
+                let classificacao;
+
+                if (imc < 16) {
+                    classificacao = 'Baixo peso muito grave';
+                } else if (imc < 17) {
+                    classificacao = 'Baixo peso grave';
+                } else if (imc < 18.5) {
+                    classificacao = 'Baixo peso';
+                } else if (imc < 25) {
+                    classificacao = 'Peso normal';
+                } else if (imc < 30) {
+                    classificacao = 'Sobrepeso';
+                } else if (imc < 35) {
+                    classificacao = 'Obesidade grau 1';
+                } else if (imc < 40) {
+                    classificacao = 'Obesidade grau 2';
+                } else {
+                    classificacao = 'Obesidade grau 3';
+                }
+
+                document.getElementById('resultado').innerHTML = `${nome}, possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: ${classificacao}.`;
+            } else {
+                alert('Por favor, preencha todos os campos corretamente.');
+            }
+        });
+    </script>
+</body>
+
+</html>
