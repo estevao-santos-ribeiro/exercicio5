@@ -39,5 +39,3 @@ A aplicação realiza as seguintes etapas:
 - **HTML5**: Estrutura da aplicação.
 - **CSS3**: Estilização da interface.
 - **JavaScript**: Lógica de cálculo e manipulação do DOM.
-
-## Estrutura do projeto
